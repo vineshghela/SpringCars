@@ -8,8 +8,12 @@ import lombok.NoArgsConstructor;
 public class CarDto {
 
 	private Long id;
+	private String name;
 	private String colour;
 	private String make;
 	private String model;
 	private int doors;
+
+	// this will spit out JSON
+
 }

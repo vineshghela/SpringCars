@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity // classes that represent tables in our DB
 @Data
 @NoArgsConstructor
-public class CarDomain {
+public class Car {
 
 	// default constructor
 	// all args constructor
@@ -26,6 +26,9 @@ public class CarDomain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotNull
+	private String name;
 
 	@NotNull
 	private String colour;
@@ -41,17 +44,19 @@ public class CarDomain {
 	@Max(5) // max value
 	private int doors;
 
-	public CarDomain(Long id, String colour, String make, String model, int doors) {
+	public Car(Long id, String name, String colour, String make, String model, int doors) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.colour = colour;
 		this.make = make;
 		this.model = model;
 		this.doors = doors;
 	}
 
-	public CarDomain(String colour, String make, String model, int doors) {
+	public Car(String name, String colour, String make, String model, int doors) {
 		super();
+		this.name = name;
 		this.colour = colour;
 		this.make = make;
 		this.model = model;
