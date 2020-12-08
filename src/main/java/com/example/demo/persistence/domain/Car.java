@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -43,6 +44,9 @@ public class Car {
 	@Min(3) // min value
 	@Max(5) // max value
 	private int doors;
+
+	@ManyToOne
+	private Garage garage;
 
 	public Car(Long id, String name, String colour, String make, String model, int doors) {
 		super();

@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.CarDto;
-import com.example.demo.persistence.domain.Car;
-import com.example.demo.service.CarService;
+import com.example.demo.dto.GarageDto;
+import com.example.demo.persistence.domain.Garage;
+import com.example.demo.service.GarageService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/car") // this is to further define the path
-public class CarController {
+@RequestMapping("/garage") // this is to further define the path
+public class GarageController {
 
-	private CarService service;
+	private GarageService service;
 
 	@Autowired
-	public CarController(CarService service) {
+	public GarageController(GarageService service) {
 		super();
 		this.service = service;
 	}
-
+//
 //	@GetMapping("/hello") // This is the mapping i want - Get me something
 //	public String hello() {
 //		return "hello from car";
@@ -54,8 +54,8 @@ public class CarController {
 
 	// Create method
 	@PostMapping("/create")
-	public ResponseEntity<CarDto> create(@RequestBody Car car) {
-		CarDto created = this.service.create(car);
+	public ResponseEntity<GarageDto> create(@RequestBody Garage garage) {
+		GarageDto created = this.service.create(garage);
 		return new ResponseEntity<>(created, HttpStatus.CREATED);
 		// http status code - 201 (created)
 
@@ -63,26 +63,26 @@ public class CarController {
 
 	// read all method
 	@GetMapping("/read")
-	public ResponseEntity<List<CarDto>> read() {
+	public ResponseEntity<List<GarageDto>> read() {
 		return ResponseEntity.ok(this.service.readAll());
 		// ok - 200
 	}
 
 	// read one
 	@GetMapping("/read/{id}")
-	public ResponseEntity<CarDto> readOne(@PathVariable Long id) {
+	public ResponseEntity<GarageDto> readOne(@PathVariable Long id) {
 		return ResponseEntity.ok(this.service.readOne(id));
 	}
 
 	// update
 	@PutMapping("/update/{id}")
-	public ResponseEntity<CarDto> update(@PathVariable Long id, @RequestBody CarDto carDto) {
-		return new ResponseEntity<>(this.service.update(carDto, id), HttpStatus.ACCEPTED);
+	public ResponseEntity<GarageDto> update(@PathVariable Long id, @RequestBody GarageDto garageDto) {
+		return new ResponseEntity<>(this.service.update(garageDto, id), HttpStatus.ACCEPTED);
 	}
 
 	// Delete one
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<CarDto> delete(@PathVariable Long id) {
+	public ResponseEntity<GarageDto> delete(@PathVariable Long id) {
 		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
 				// no_content - if deleted successfully then should return nothing
 				: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
