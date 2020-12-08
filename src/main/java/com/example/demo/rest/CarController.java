@@ -88,4 +88,9 @@ public class CarController {
 				: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
 		// if the record isnt found!
 	}
+
+	@GetMapping("findByName/{name}")
+	public ResponseEntity<List<CarDto>> findByName(@PathVariable String name) {
+		return ResponseEntity.ok(this.service.findByName(name));
+	}
 }
