@@ -85,7 +85,7 @@ public class CarController {
 	public ResponseEntity<CarDto> delete(@PathVariable Long id) {
 		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
 				// no_content - if deleted successfully then should return nothing
-				: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		// if the record isnt found!
 	}
 
